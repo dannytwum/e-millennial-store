@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Makes the site scale properly on phones (responsive) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Millennial Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== 1. INTRO SECTION: header + welcome ===== -->
+  <section id="intro" class="intro">
+    <header class="header">
+      <img src="images/EMS.svg" alt="EMS logo" class="logo" />
+      <nav class="nav">
+        <a href="#intro">Intro</a>
+        <a href="#about">About</a>
+        <a href="#shop">Shop</a>
+      </nav>
+      <!-- Cart button: the <span> shows how many different items are in the cart -->
+      <button id="cart-btn" class="cart-btn" aria-label="Open cart">
+        <img src="images/cart.svg" alt="" class="cart-icon" />
+        <span id="cart-count">0</span>
+      </button>
+    </header>
+
+    <div class="intro-body">
+      <h1>THE<br />E-MILLENIAL<br />STORE</h1>
+      <img src="images/heroImage.png" alt="Gadgets" class="hero-img" />
+    </div>
+    <a href="#shop" class="btn btn-primary shop-now">SHOP NOW</a>
+  </section>
+
+  <!-- ===== 2. ABOUT SECTION ===== -->
+  <section id="about" class="about">
+    <p>E-Millenial Store is an hypothetical online store for gadgets we believe every ‘Millenial’ or ‘Gen-Z’ should have today. We’ve got mobile phones, laptops, smartwatches and other gadgets. Explore all our gadgets and choose the ones that suit you.</p>
+  </section>
+
+  <!-- ===== 3. SHOP SECTION (cards are added here by script.js) ===== -->
+  <section id="shop" class="shop">
+    <h2>OUR GADGETS</h2>
+    <div id="product-grid" class="product-grid"></div>
+  </section>
+
+  <!-- ===== 4. FOOTER ===== -->
+  <footer class="footer">
+    <img src="images/EMS.svg" alt="EMS logo" class="logo" />
+    <span>Designed and Crafted by a Frontend Ninja</span>
+  </footer>
+
+  <!-- ===== CART MODAL ===== -->
+  <!-- Clicking the grey overlay (outside the white box) closes the modal -->
+  <div id="cart-modal" class="modal-overlay">
+    <div class="modal">
+
+      <!-- A. Items section: table filled by JavaScript -->
+      <div id="cart-items" class="table-wrap"></div>
+
+      <!-- B. User details section -->
+      <form id="user-form" novalidate>
+        <div class="field">
+          <input type="text" id="name" placeholder="Your Name" />
+          <small class="error" id="name-error"></small>
+        </div>
+        <div class="field">
+          <input type="email" id="email" placeholder="Your Email" />
+          <small class="error" id="email-error"></small>
+        </div>
+        <div class="field">
+          <input type="tel" id="phone" placeholder="Your Phone Number" />
+          <small class="error" id="phone-error"></small>
+        </div>
+      </form>
+
+      <!-- C. Total amount section -->
+      <div class="total">
+        <p>Total Amount to be Paid</p>
+        <strong id="cart-total">₦0</strong>
+      </div>
+
+      <!-- D. Actions section -->
+      <div class="actions">
+        <button id="continue-btn" class="btn btn-light">Continue Shopping</button>
+        <button id="checkout-btn" class="btn btn-primary">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SUMMARY MODAL (after successful payment) ===== -->
+  <div id="summary-modal" class="modal-overlay">
+    <div class="modal summary">
+      <h2>Thank You, <span id="summary-name"></span>, Your Order Has been Received</h2>
+      <img src="images/check.svg" alt="Success" class="check" />
+      <h3>Summary</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>S/N</th><th>Item</th><th>Quantity</th></tr></thead>
+          <tbody id="summary-body"></tbody>
+        </table>
+      </div>
+      <div class="actions"><button id="ok-btn" class="btn btn-primary">Ok</button></div>
+    </div>
+  </div>
+
+  <!-- Paystack's library must load BEFORE our script -->
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
